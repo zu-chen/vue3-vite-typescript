@@ -1,5 +1,5 @@
 const functionUtil = {
-  // 範例function
+  // 範例: function
   abc() {
     console.log('abc')
   }

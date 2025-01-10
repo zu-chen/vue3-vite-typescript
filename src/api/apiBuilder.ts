@@ -12,7 +12,6 @@ const request = axios.create({
 // 請求攔截器
 request.interceptors.request.use(
   (config) => {
-    // 這裡可以添加 token 等授權信息
     return config
   },
   (error) => {

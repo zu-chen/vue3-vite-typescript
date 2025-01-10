@@ -1,42 +1,30 @@
-import { getAPI } from './getAPI'
-import { insertAPI } from './insertAPI'
-import { updateAPI } from './updateAPI'
-import { deleteAPI } from './deleteAPI'
+import { apiManager } from './apiManager'
 import type { ApiRequest, ApiResponse, ApiModules } from './apiType'
 import { ElNotification } from 'element-plus'
 
 const apiModules: ApiModules = {
-  getAPI,
-  insertAPI,
-  updateAPI,
-  deleteAPI
+  apiManager
 }
 
 export const apiHandler = {
-  // API請求
+  // API 請求
   request: async (
     action: string,
-    { method, param }: ApiRequest
+    { param }: ApiRequest
   ): Promise<ApiResponse> => {
-    const [module] = method.split('.')
-
-    if (
-      !apiModules[module as keyof ApiModules] ||
-      !apiModules[module as keyof ApiModules][action]
-    ) {
-      throw new Error(`Invalid API method: ${method}`)
+    if (!apiModules.apiManager || !apiModules.apiManager[action]) {
+      throw new Error(`Invalid API action: ${action}`)
     }
 
     try {
-      const response =
-        await apiModules[module as keyof ApiModules][action](param)
+      const response = await apiModules.apiManager[action](param)
       return response.data || response
     } catch (error) {
       throw error
     }
   },
 
-  // API 預設回應處理流程
+  // API 回應
   responseHandler(
     response: any,
     successFunc: () => void = () => {},

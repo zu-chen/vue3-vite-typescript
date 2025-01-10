@@ -9,13 +9,12 @@ export interface ApiResponse<T = any> {
 
 // 通用請求參數
 export interface ApiRequest {
-  method: string
   param?: any
 }
 
 // API 模組的類型
 export type ApiModules = {
-  [K in 'getAPI' | 'insertAPI' | 'updateAPI' | 'deleteAPI']: {
+  [K in 'apiManager']: {
     [key: string]: (param?: any) => Promise<AxiosResponse<any, any>>
   }
 }

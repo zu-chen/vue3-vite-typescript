@@ -3,8 +3,9 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import moment from 'moment'
+import router from './router'
 import App from './App.vue'
-import './style.css'
+import '@/styles/index.scss'
 import apiHandler from './api/apiHandler'
 import functionUtil from './util/functionUtil'
 
@@ -23,4 +24,5 @@ declare global {
 
 const app = createApp(App)
 app.use(ElementPlus)
+app.use(router)
 app.mount('#app')
