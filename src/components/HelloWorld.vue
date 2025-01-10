@@ -19,9 +19,39 @@ export default {
       value1: 0
     })
 
+    const getVersion = async () => {
+      try {
+        const res = await window.api.request('getVersion', {
+          method: 'getAPI'
+        })
+        window.api.responseHandler(res, () => {})
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
+    const queryInsurance = async () => {
+      try {
+        const res = await window.api.request('queryInsurance', {
+          method: 'getAPI',
+          param: {
+            page: 1,
+            limit: 10,
+            keyword: 'search'
+          }
+        })
+        window.api.responseHandler(res, () => {})
+      } catch (error) {
+        console.error(error)
+      }
+    }
+
     onMounted(() => {
       const a = window.moment().format('YYYY-MM-DD')
       console.log('moment.js', a)
+
+      getVersion()
+      queryInsurance()
     })
 
     return {
