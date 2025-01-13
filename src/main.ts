@@ -4,10 +4,17 @@ import 'element-plus/dist/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import moment from 'moment'
 import router from './router'
+import store from './store'
 import App from './App.vue'
 import '@/styles/index.scss'
 import apiHandler from './api/apiHandler'
 import functionUtil from './util/functionUtil'
+
+const app = createApp(App)
+app.use(ElementPlus)
+app.use(router)
+app.use(store)
+app.mount('#app')
 
 // 全域引用
 window.moment = moment
@@ -21,8 +28,3 @@ declare global {
     utils: typeof functionUtil
   }
 }
-
-const app = createApp(App)
-app.use(ElementPlus)
-app.use(router)
-app.mount('#app')

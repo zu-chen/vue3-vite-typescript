@@ -1,12 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
-import Home from '@/views/EgHome.vue'
+import MainView from '@/views/MainView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
+    component: MainView
   }
 ]
 
@@ -16,7 +15,6 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  console.log('Navigating to:', to.path)
   next()
 })
 

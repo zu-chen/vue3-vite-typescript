@@ -1,4 +1,4 @@
-# Logs
+### Logs
 logs
 *.log
 npm-debug.log*
@@ -7,18 +7,27 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+### ignore as regular project ###
 node_modules
 dist
 dist-ssr
 *.local
 
-# Editor directories and files
+### Editor directories and files
 .vscode/*
 !.vscode/extensions.json
-.idea
 .DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### package-lock ###
+package-lock.json
