@@ -10,7 +10,7 @@ export default {
   setup() {
     const state = reactive({})
     return {
-      ...toRefs(state),
+      ...toRefs(state)
     }
   }
 }

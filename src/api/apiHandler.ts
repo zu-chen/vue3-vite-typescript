@@ -16,17 +16,19 @@ export const apiHandler = {
       throw new Error(`Invalid API action: ${action}`)
     }
 
-    try {
-      const response = await apiModules.apiManager[action](param)
-      return response.data || response
-    } catch (error) {
-      throw error
-    }
+    const response = await apiModules.apiManager[action](param)
+    return response.data || response
   },
 
   // API 回應
-  responseHandler(
-    response: any,
+  responseHandler<
+    T extends {
+      returnCode?: string
+      returnMessage?: string
+      returnMsg?: string
+    }
+  >(
+    response: T,
     successFunc: () => void = () => {},
     errorFunc: () => void = () => {}
   ) {
